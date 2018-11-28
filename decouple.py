@@ -104,7 +104,7 @@ class RepositoryIni(RepositoryEmpty):
 
     def __init__(self, source):
         self.parser = ConfigParser()
-        with open(source) as file_:
+        with open(source, encoding='utf-8') as file_:
             self.parser.readfp(file_)
 
     def __contains__(self, key):
@@ -122,7 +122,7 @@ class RepositoryEnv(RepositoryEmpty):
     def __init__(self, source):
         self.data = {}
 
-        with open(source) as file_:
+        with open(source, encoding='utf-8') as file_:
             for line in file_:
                 line = line.strip()
                 if not line or line.startswith('#') or '=' not in line:
